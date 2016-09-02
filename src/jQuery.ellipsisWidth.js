@@ -2,16 +2,24 @@ var $ = require("jquery");
 var stringWidth = require("./stringWidth.js");
 
 var DEFAULT_OPTION = {
-    //newText: "블라블라..",
+    //newText: "blah..",
     replace: '...',
     position: 'after', //   front|middle|after
     path: false,
     pathSeparator: '/'
 };
 
+$.fn.ellipsisWidth = function(param) {
 
+    //multiple elem recursive
+    if (this.length > 1) {
 
-$.fn.elipsisWidth = function(param) {
+        this.each(function(i, el) {
+            $(el).ellipsisWidth(param);
+        });
+
+        return this;
+    }
 
     //set option..
     var option = {};
@@ -31,8 +39,11 @@ $.fn.elipsisWidth = function(param) {
     //text
     var originText = option.newText || this.text();
 
-    //
+    //calc estimate Length
+    var curStrWidth = stringWidth(this.get(0), originText),
+        estimateLen = Math.floor(option.width / (curStrWidth / originText.length));
 
+    console.log(estimateLen);
 
 
 };

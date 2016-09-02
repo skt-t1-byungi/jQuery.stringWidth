@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>elipsisWidth</title>
+    <title>ellipsisWidth</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script type="text/javascript" src="../dist/jQuery.ellipsisWidth.min.js"></script>
 </head>
@@ -60,52 +60,52 @@
 
 
     <script>
-        $('.test').elipsisWidth(100);
+        $('.test').ellipsisWidth(100);
 
         $('.test').each(function () {
             console.log($(this).width());
         });
 
-        $('.test-dynamic').text("asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!").elipsisWidth(100);
+        $('.test-dynamic').text("asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!").ellipsisWidth(100);
 
-        $('.test-replace').elipsisWidth({
+        $('.test-replace').ellipsisWidth({
             width : 100,
             replace: "___",
         });
 
-        $('.test-middle').elipsisWidth({
+        $('.test-middle').ellipsisWidth({
             width : 100,
             position: "middle",
         });
 
-        $('.test-front').elipsisWidth({
+        $('.test-front').ellipsisWidth({
             width : 100,
             position: "front",
         });
 
-        $('.test-number1').elipsisWidth({
+        $('.test-number1').ellipsisWidth({
             width : 100,
             position: 3,
         });
 
-        $('.test-number2').elipsisWidth({
+        $('.test-number2').ellipsisWidth({
             width : 100,
             position: -3,
         });
 
-        $('.test-path1').elipsisWidth({
+        $('.test-path1').ellipsisWidth({
             width : 100,
             path: true,
             pathSeparator:"\\"
         });
 
-        $('.test-path2').elipsisWidth({
+        $('.test-path2').ellipsisWidth({
             width : 100,
             path: true,
             position: 3
         });
 
-        $('.test-path3').elipsisWidth({
+        $('.test-path3').ellipsisWidth({
             width : 100,
             path: true,
             position: -3
