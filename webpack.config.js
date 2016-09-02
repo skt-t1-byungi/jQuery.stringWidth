@@ -4,7 +4,7 @@ var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
 module.exports = {
     entry: {
         stringWidth: './src/jQuery.stringWidth.js',
-        elipsisWidth: './src/jQuery.elipsisWidth.js'
+        ellipsisWidth: './src/jQuery.ellipsisWidth.js'
     },
     output: {
         path: __dirname + '/dist/',
