@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getLnegth</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="../dist/jquery.stringWidth.js"></script>
+</head>
+<style>
+    div{
+        display: inline
+    }
+</style>
+<body>
+    <div style="font-size:15px; font-family:verdana;"></div>
+    <div style="font-size:20px; font-family:verdana;"></div>
+    <div style="font-size:25px; font-family:verdana;"></div>
+
+    <script>
+        var text = "안녕asdf asdf asd";
+        $('div').each(function () {
+            var $el = $(this).text(text);
+
+            console.log($el.width(), $el.stringWidth(text));
+        });
+
+    </script>
+</body>
+</html>
