@@ -13,19 +13,48 @@
 <body>
     <div class="test">
         asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
-    </div>
+    </div><br>
 
     <div class="test">
         asasfdasfdasdsaf asfas 234243 !!!!!!!!!fadfasdf
-    </div>
+    </div><br>
 
     <div class="test">
         asasfdasfdasdsaf asfas 234243
-    </div>
+    </div><br>
 
     <div class="test-replace">
         asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
-    </div>
+    </div><br>
+
+    <div class="test-middle">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-front">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-number1">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-number2">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-path1">
+        C:\INNOMFT\webapp\boot\app\dispatchTransfer\test\testasfasd\tas\asdf\asf.test
+    </div><br>
+
+    <div class="test-path2">
+        C:/INNOMFT/webapp/boot/app/dispatchTransfer/test/testasfasd/tas/asdf/asf.test
+    </div><br>
+
+    <div class="test-path3">
+        C:/INNOMFT/webapp/boot/app/dispatchTransfer/test/testasfasd/tas/asdf/asf.test
+    </div><br>
+
 
     <script>
         $('.test').elipsisWidth(100);
@@ -34,9 +63,47 @@
             console.log($(this).width());
         });
 
-        $('.test').elipsisWidth({
+        $('.test-replace').elipsisWidth({
             px : 100,
             replace: "___",
+        });
+
+        $('.test-middle').elipsisWidth({
+            px : 100,
+            position: "middle",
+        });
+
+        $('.test-front').elipsisWidth({
+            px : 100,
+            position: "front",
+        });
+
+        $('.test-number1').elipsisWidth({
+            px : 100,
+            position: 3,
+        });
+
+        $('.test-number2').elipsisWidth({
+            px : 100,
+            position: -3,
+        });
+
+        $('.test-path1').elipsisWidth({
+            px : 100,
+            path: true,
+            pathSeparator:"\\"
+        });
+
+        $('.test-path2').elipsisWidth({
+            px : 100,
+            path: true,
+            position: 3
+        });
+
+        $('.test-path3').elipsisWidth({
+            px : 100,
+            path: true,
+            position: -3
         });
 
     </script>
