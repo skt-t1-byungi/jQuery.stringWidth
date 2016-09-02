@@ -11,15 +11,17 @@
     }
 </style>
 <body>
-    <div style="font-size:15px; font-family:verdana;"></div>
-    <div style="font-size:20px; font-family:verdana;"></div>
-    <div style="font-size:25px; font-family:verdana;"></div>
+    <div class="test" style="font-size:15px; font-family:verdana;"></div>
+    <div class="test" style="font-size:20px; font-family:verdana;"></div>
+    <div class="test" style="font-size:25px; font-family:verdana;"></div>
+    <div style="font-size:15px">
+        <div class="test" style="font-size:2em;"></div>
+    </div>
 
     <script>
         var text = "안녕asdf asdf asd";
-        $('div').each(function () {
+        $('.test').each(function () {
             var $el = $(this).text(text);
-
             console.log($el.width(), $el.stringWidth(text));
         });
 

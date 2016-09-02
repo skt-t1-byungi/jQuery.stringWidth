@@ -1,3 +1,5 @@
+var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
+
 // webpack.config.js
 module.exports = {
     entry: './src/jquery.stringWidth.js',
@@ -8,5 +10,8 @@ module.exports = {
     },
     externals: {
         "jquery": "jQuery"
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin()
+    ]
 };
