@@ -1,0 +1,22 @@
+{
+  "name": "jquery.ellipsiswidth",
+  "version": "0.0.1",
+  "description": "jquery ellipsisWidth plugin",
+  "main": "webpack.config.js",
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "test": "webpack -watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skt-t1-byungi/jQuery.ellipsisWidth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth/issues"
+  },
+  "homepage": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth#readme"
+}

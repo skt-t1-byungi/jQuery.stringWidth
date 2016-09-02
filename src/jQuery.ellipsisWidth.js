@@ -9,6 +9,8 @@ var DEFAULT_OPTION = {
     pathSeparator: '/'
 };
 
+
+
 $.fn.elipsisWidth = function(param) {
 
     //set option..
