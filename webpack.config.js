@@ -2,10 +2,13 @@ var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
 
 // webpack.config.js
 module.exports = {
-    entry: './src/jquery.stringWidth.js',
+    entry: {
+        stringWidtdh: './src/jQuery.stringWidth.js',
+        elipsisWidth: './src/jQuery.elipsisWidth.js'
+    },
     output: {
         path: __dirname + '/dist/',
-        filename: 'jquery.stringWidth.js',
+        filename: 'jQuery.[name].min.js',
         libraryTarget: "umd"
     },
     externals: {

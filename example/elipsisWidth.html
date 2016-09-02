@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>elipsisWidth</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="../dist/jQuery.elipsisWidth.min.js"></script>
+</head>
+<style>
+    div{
+        display: inline
+    }
+</style>
+<body>
+    <div class="test">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div>
+
+    <div class="test">
+        asasfdasfdasdsaf asfas 234243 !!!!!!!!!fadfasdf
+    </div>
+
+    <div class="test">
+        asasfdasfdasdsaf asfas 234243
+    </div>
+
+    <div class="test-replace">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div>
+
+    <script>
+        $('.test').elipsisWidth(100);
+
+        $('.test').each(function () {
+            console.log($(this).width());
+        });
+
+        $('.test').elipsisWidth({
+            px : 100,
+            replace: "___",
+        });
+
+    </script>
+</body>
+</html>
