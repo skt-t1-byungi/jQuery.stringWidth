@@ -3,7 +3,7 @@
 <head>
     <title>elipsisWidth</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-    <script type="text/javascript" src="../dist/jQuery.elipsisWidth.min.js"></script>
+    <script type="text/javascript" src="../dist/jQuery.ellipsisWidth.min.js"></script>
 </head>
 <style>
     div{
@@ -21,6 +21,9 @@
 
     <div class="test">
         asasfdasfdasdsaf asfas 234243
+    </div><br>
+
+    <div class="test-dynamic">
     </div><br>
 
     <div class="test-replace">
@@ -63,45 +66,47 @@
             console.log($(this).width());
         });
 
+        $('.test-dynamic').text("asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!").elipsisWidth(100);
+
         $('.test-replace').elipsisWidth({
-            px : 100,
+            width : 100,
             replace: "___",
         });
 
         $('.test-middle').elipsisWidth({
-            px : 100,
+            width : 100,
             position: "middle",
         });
 
         $('.test-front').elipsisWidth({
-            px : 100,
+            width : 100,
             position: "front",
         });
 
         $('.test-number1').elipsisWidth({
-            px : 100,
+            width : 100,
             position: 3,
         });
 
         $('.test-number2').elipsisWidth({
-            px : 100,
+            width : 100,
             position: -3,
         });
 
         $('.test-path1').elipsisWidth({
-            px : 100,
+            width : 100,
             path: true,
             pathSeparator:"\\"
         });
 
         $('.test-path2').elipsisWidth({
-            px : 100,
+            width : 100,
             path: true,
             position: 3
         });
 
         $('.test-path3').elipsisWidth({
-            px : 100,
+            width : 100,
             path: true,
             position: -3
         });
