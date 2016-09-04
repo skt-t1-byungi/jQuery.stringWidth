@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/skt-t1-byungi/jQuery.ellipsisWidth.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "skt-t1-byungi",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth/issues"
   },

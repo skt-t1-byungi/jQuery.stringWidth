@@ -1,5 +1,5 @@
 var $ = require("jquery");
-var stringWidth = require("./stringWidth.js");
+var Ellipsis = require("./Ellipsis.js");
 
 var DEFAULT_OPTION = {
     //newText: "blah..",
@@ -36,14 +36,11 @@ $.fn.ellipsisWidth = function(param) {
         option.width = this.width();
     }
 
-    //text
-    var originText = option.newText || this.text();
+    if (!option.newText) {
+        option.newText = this.text();
+    }
 
-    //calc estimate Length
-    var curStrWidth = stringWidth(this.get(0), originText),
-        estimateLen = Math.floor(option.width / (curStrWidth / originText.length));
+    var instance = new Ellipsis(this.get(0), option);
 
-    console.log(estimateLen);
-
-
+    this.text(instance.getResult());
 };
