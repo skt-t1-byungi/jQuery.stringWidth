@@ -77,7 +77,7 @@ Ellipsis.prototype = {
         cutter.setPosition(this.option.position);
         cutter.setStringWidth(this.stringWidth);
 
-        //.. or .. if exists markedReplace(replaceWidth)
+        //whether exists markedReplace(replaceWidth)
         cutter.setPresenter(new Presenter(this.option.newText, this.markedReplace || this.option.replace));
         cutter.setWidth(this.option.width - (this.option.replaceWidth || 0));
 
