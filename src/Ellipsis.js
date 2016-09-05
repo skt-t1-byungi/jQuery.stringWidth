@@ -1,3 +1,5 @@
+var striptags = require('striptags');
+
 var stringWidth = require("./stringWidth.js");
 var Presenter = require("./Presenter.js");
 
@@ -5,26 +7,59 @@ var Presenter = require("./Presenter.js");
 var BaseCutter = require("./Cutter/Base.js");
 var PathCutter = require("./Cutter/Path.js");
 
+//cosnt
+var REPLACE_MARK_PATTERN = "<fixed>:replace</fixed>";
+
 var Ellipsis = function(el, option) {
     this.el = el;
     this.option = option;
 
+    // this.makredReplace = null;
+    this.initForReplaceWidth();
+
     // this.stringWidth = null;
     // this.cutter = null;
-
     this.setStringWidth();
     this.setCutter();
+
 };
 
 Ellipsis.prototype = {
 
     getResult: function() {
-        return this.cutter.excute();
+        var result = this.cutter.excute();
+
+        if (this.markedReplace) {
+            result = result.replace(this.markedReplace, this.option.replace);
+        }
+
+        return result;
+    },
+
+    initForReplaceWidth: function() {
+
+        if (!this.option.replaceWidth) {
+            return;
+        }
+
+        this.markedReplace = REPLACE_MARK_PATTERN.replace(':replace', this.option.replace);
     },
 
     setStringWidth: function() {
-        this.stringWidth = function(width) {
-            return stringWidth(this.el, width);
+        this.stringWidth = function(str) {
+
+            //remove replace if exists markedReplace
+            if (this.markedReplace) {
+                str = str.replace(this.markedReplace, '');
+            }
+
+            //strip tags if allow raw
+            if (this.option.useRawReplace) {
+                str = striptags(str);
+            }
+
+            return stringWidth(this.el, str); //remove tags..
+
         }.bind(this);
     },
 
@@ -38,14 +73,17 @@ Ellipsis.prototype = {
         }
 
         cutter.setText(this.option.newText);
-        cutter.setPresenter(new Presenter(this.option.newText, this.option.replace));
         cutter.setReplace(this.option.replace);
-        cutter.setWidth(this.option.width);
         cutter.setPosition(this.option.position);
         cutter.setStringWidth(this.stringWidth);
 
+        //.. or .. if exists markedReplace(replaceWidth)
+        cutter.setPresenter(new Presenter(this.option.newText, this.markedReplace || this.option.replace));
+        cutter.setWidth(this.option.width - (this.option.replaceWidth || 0));
+
         this.cutter = cutter;
-    }
+    },
+
 };
 
 module.exports = Ellipsis;

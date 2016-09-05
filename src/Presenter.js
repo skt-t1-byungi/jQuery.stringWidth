@@ -6,7 +6,7 @@ var Presenter = function(text, replace) {
 Presenter.prototype = {
 
     toFront: function(limit) {
-        return this.replace.trim() + this.text.substr(this.text.length - limit - 1, limit);
+        return this.replace + this.text.substr(this.text.length - limit - 1, limit);
     },
 
     toMiddle: function(limit) {

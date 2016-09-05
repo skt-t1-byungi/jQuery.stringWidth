@@ -4,6 +4,7 @@ var Base = function() {
     // this.presenter = null;
     // this.stringWidth = null;
     // this.width = 0;
+    // this.replaceWidth = null;
 };
 
 Base.prototype = {
@@ -30,6 +31,10 @@ Base.prototype = {
 
     setStringWidth: function(stringWidth) {
         this.stringWidth = stringWidth;
+    },
+
+    setReplaceWidth: function(replaceWidth, markReplace) {
+        this.replaceWidth = replaceWidth;
     },
 
     isSuitableText: function(text) {

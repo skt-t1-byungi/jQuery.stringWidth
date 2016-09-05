@@ -1,4 +1,5 @@
 var UglifyJsPlugin = require("webpack/lib/optimize/UglifyJsPlugin");
+var BannerPlugin = require("webpack/lib/BannerPlugin");
 
 // webpack.config.js
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
         "jquery": "jQuery"
     },
     plugins: [
-        new UglifyJsPlugin()
+        new UglifyJsPlugin(),
+        new BannerPlugin('jQuery.ellipsisWidth.js (with stringWidth) \nsertion@innorix.com\nhttps://github.com/skt-t1-byungi/jQuery.ellipsisWidth')
     ]
 };
