@@ -1,23 +1,28 @@
-var Presenter = function(replace) {
+var Presenter = function(text, replace) {
+    this.text = text;
     this.replace = replace;
 };
 
 Presenter.prototype = {
 
-    toFront: function(text, limitLength) {
-        return this.replace + text.substr(text.length - limitLength - 1, limitLength);
+    toFront: function(limit) {
+        return this.replace.trim() + this.text.substr(this.text.length - limit - 1, limit);
     },
 
-    toMiddle: function(text, limitLength) {
-        var preLen = limitLength / 2,
-            afterLen = preLen + (limitLength % 2);
+    toMiddle: function(limit) {
+        var preLen = Math.floor(limit / 2),
+            afterLen = preLen + (limit % 2);
 
-        return text.substr(0, preLen) + this.replace + text.substr(text.length - afterLen - 1, afterLen);
+        return this.text.substr(0, preLen).trim() + this.replace + this.text.substr(this.text.length - afterLen - 1, afterLen).trim();
     },
 
-    toAfter: function(text, limitLength) {
-        return text.substr(0, limitLength) + this.replace;
+    toAfter: function(limit) {
+        return this.text.substr(0, limit).trim() + this.replace;
     },
+
+    byPositionNumber: function(positionNum, limit) {
+        return "asdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+    }
 };
 
 module.exports = Presenter;

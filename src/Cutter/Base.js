@@ -8,6 +8,10 @@ var Base = function() {
 
 Base.prototype = {
 
+    setText: function(text) {
+        this.text = text;
+    },
+
     setWidth: function(width) {
         this.width = width;
     },
@@ -46,24 +50,34 @@ Base.prototype = {
             case 'after':
                 return presenter.toAfter.bind(presenter);
             default:
-                return presenter.byNumber.bind(presenter);
+                return function(limit) {
+                    return presenter.byPositionNumber.bind(presenter)(this.position, limit);
+                };
         }
     },
 
-    excute: function(newText) {
+    excute: function() {
 
-        if (this.isSuitableText(newText)) {
-            return newText;
+        if (this.isSuitableText(this.text)) {
+            return this.text;
         }
 
-        var assumeLen = this.getSuitableLength(newText),
+        var assumeLen = this.getSuitableLength(this.text),
             present = this.getPresent();
 
-        var parseText;
-        do {
-            parseText = present(newText, assumeLen);
-        } while (true);
+        var parsedText = present(assumeLen);
+        var prevParsedText;
 
+        do {
+            //store preve text..
+            prevParsedText = parsedText;
+
+            assumeLen++;
+            parsedText = present(assumeLen);
+
+        } while (this.isSuitableText(parsedText));
+
+        return prevParsedText ? prevParsedText : parsedText;
     }
 };
 

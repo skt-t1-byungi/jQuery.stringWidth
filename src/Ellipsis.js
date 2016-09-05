@@ -19,7 +19,7 @@ var Ellipsis = function(el, option) {
 Ellipsis.prototype = {
 
     getResult: function() {
-        return this.cutter.excute(this.option.newText);
+        return this.cutter.excute();
     },
 
     setStringWidth: function() {
@@ -37,7 +37,8 @@ Ellipsis.prototype = {
             cutter = new BaseCutter();
         }
 
-        cutter.setPresenter(new Presenter(this.option.replace));
+        cutter.setText(this.option.newText);
+        cutter.setPresenter(new Presenter(this.option.newText, this.option.replace));
         cutter.setReplace(this.option.replace);
         cutter.setWidth(this.option.width);
         cutter.setPosition(this.option.position);

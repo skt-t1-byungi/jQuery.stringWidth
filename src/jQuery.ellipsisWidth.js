@@ -4,12 +4,27 @@ var Ellipsis = require("./Ellipsis.js");
 var INSTANCE_SET_PROP = '_ellipsisWidthInstance';
 var DEFAULT_OPTION = {
     //newText: "blah..",
-    replace: '...',
+    replace: '..<span>asdfsdf</span>',
+    //replaceWidth: 100,
+    rawReplace: true,
     position: 'after', //   front|middle|after
     path: false,
     pathSeparator: '/',
     rerenderOnResize: false,
 };
+
+/**
+ * render (by ralwReplace)
+ * @param  {object} $el      jQuery Wrapped dom
+ * @param  {object} instance Ellipsis
+ */
+function render($el, instance) {
+    if (instance.option.rawReplace) {
+        $el.html(instance.getResult());
+    } else {
+        $el.text(instance.getResult());
+    }
+}
 
 //for rerenderOnResize;
 var rerenderList = [];
@@ -21,9 +36,11 @@ $(window).resize(function() {
 
     rerenderList.forEach(function($el) {
 
-        if ($.contains(document, $el.get(0))) {
-            $el.text(this.data(INSTANCE_SET_PROP).getResult());
+        if (!$.contains(document, $el.get(0))) {
+            return;
         }
+
+        render($el, $el.data(INSTANCE_SET_PROP));
     });
 });
 
@@ -61,10 +78,13 @@ $.fn.ellipsisWidth = function(param) {
         option.newText = this.text();
     }
 
+    //remove empty char
+    option.newText = option.newText.trim();
+
 
     //render
     var instance = new Ellipsis(this.get(0), option);
-    this.text(instance.getResult());
+    render(this, instance);
 
 
     //set rerender
