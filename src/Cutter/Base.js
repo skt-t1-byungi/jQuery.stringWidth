@@ -1,5 +1,9 @@
 var Base = function() {
     // this.position = "middle";
+    // this.replace= '...';
+    // this.presenter = null;
+    // this.stringWidth = null;
+    // this.width = 0;
 };
 
 Base.prototype = {
@@ -12,7 +16,11 @@ Base.prototype = {
         this.replace = replace;
     },
 
-    setPosition: function(positon) {
+    setPresenter: function(presenter) {
+        this.presenter = presenter;
+    },
+
+    setPosition: function(position) {
         this.position = position;
     },
 
@@ -20,16 +28,41 @@ Base.prototype = {
         this.stringWidth = stringWidth;
     },
 
+    isSuitableText: function(text) {
+        return this.width >= this.stringWidth(text);
+    },
+
+    getSuitableLength: function(text) {
+        return Math.floor(this.width / (this.stringWidth(text) / text.length) - this.replace.length);
+    },
+
+    getPresent: function() {
+        var presenter = this.presenter;
+        switch (this.position) {
+            case 'front':
+                return presenter.toFront.bind(presenter);
+            case 'middle':
+                return presenter.toMiddle.bind(presenter);
+            case 'after':
+                return presenter.toAfter.bind(presenter);
+            default:
+                return presenter.byNumber.bind(presenter);
+        }
+    },
+
     excute: function(newText) {
 
-        var currentWidth = this.stringWidth(newText);
-
-        if (currentWidth <= this.width) {
+        if (this.isSuitableText(newText)) {
             return newText;
         }
 
-        var assumeLen = this.width / (this.stringWidth(newText) / newText.length);
+        var assumeLen = this.getSuitableLength(newText),
+            present = this.getPresent();
 
+        var parseText;
+        do {
+            parseText = present(newText, assumeLen);
+        } while (true);
 
     }
 };

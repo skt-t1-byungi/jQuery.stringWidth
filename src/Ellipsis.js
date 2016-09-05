@@ -1,4 +1,5 @@
 var stringWidth = require("./stringWidth.js");
+var Presenter = require("./Presenter.js");
 
 //Cutters..
 var BaseCutter = require("./Cutter/Base.js");
@@ -18,12 +19,12 @@ var Ellipsis = function(el, option) {
 Ellipsis.prototype = {
 
     getResult: function() {
-        this.cutter.excute(this.option.newText);
+        return this.cutter.excute(this.option.newText);
     },
 
     setStringWidth: function() {
         this.stringWidth = function(width) {
-            return stringWidth(this, width);
+            return stringWidth(this.el, width);
         }.bind(this);
     },
 
@@ -36,6 +37,7 @@ Ellipsis.prototype = {
             cutter = new BaseCutter();
         }
 
+        cutter.setPresenter(new Presenter(this.option.replace));
         cutter.setReplace(this.option.replace);
         cutter.setWidth(this.option.width);
         cutter.setPosition(this.option.position);
