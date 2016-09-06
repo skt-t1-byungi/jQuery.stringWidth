@@ -130,7 +130,7 @@ $("div").ellipsisWidth({
     position: "middle"
 });
 ```
-stringWidth
+bonus) stringWidth
 ---
 ```js
 $("span").stringWidth("test");
