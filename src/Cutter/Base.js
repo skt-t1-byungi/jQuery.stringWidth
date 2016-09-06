@@ -28,7 +28,6 @@ Base.prototype = {
     },
 
     excute: function() {
-
         if (this.isAllowLength(this.option.getText())) {
             return this.option.getText();
         }
@@ -37,7 +36,6 @@ Base.prototype = {
     },
 
     findByLoop: function() {
-
         var assumeLen = this.guessSuitableLength(this.option.getText()),
             parsedText = this.present(assumeLen);
 

@@ -1,8 +1,6 @@
 var BaseCutter = require("./Base.js");
 var Presenter = require("../Presenter.js");
-
-var extend = require('extend'); // form mixins..
-
+var extend = require('extend'); // for mixins..
 var parentProps = BaseCutter.prototype;
 
 /**
@@ -55,7 +53,6 @@ extend(Path.prototype, parentProps, {
         //reset option
         this.resetOptionExceptFilename();
 
-        //find
         return this.findByLoop() + fname;
     }
 
