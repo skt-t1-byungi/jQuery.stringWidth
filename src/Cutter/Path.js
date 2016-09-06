@@ -27,8 +27,6 @@ extend(Path.prototype, parentProps, {
         this.option.setText(this.getFilename());
         this.option.set('position', -this.option.getExtension().length);
 
-        console.log(this.option.getExtension().length);
-
         //change present
         this.setPresent(PresentFactory(this.option));
 

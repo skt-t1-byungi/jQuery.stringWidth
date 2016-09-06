@@ -119,7 +119,7 @@ $("div").ellipsisWidth({
     rerenderOnResize: true, //default false
 });
 ```
-when browser resize, excute rerender.
+excute rerender on browser resize.
 
 ### can be mixed
 ```js
