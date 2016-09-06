@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth/issues"
   },
-  "homepage": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth#readme"
+  "homepage": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth#readme",
+  "dependencies": {
+    "ucfirst": "^1.0.0"
+  }
 }

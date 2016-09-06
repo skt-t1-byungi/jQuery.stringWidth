@@ -1,12 +1,12 @@
 var $ = require("jquery");
-var Ellipsis = require("./Ellipsis.js");
+var Ellipsis = require("../Ellipsis.js");
 
 var INSTANCE_SET_PROP = '_ellipsisWidthInstance';
 var DEFAULT_OPTION = {
     //newText: "blah..",
     replace: '...',
     //replaceWidth: 50,
-    useRawReplace: false,
+    useHtmlReplace: false,
     position: 'after', //   front|middle|after
     path: false,
     pathSeparator: '/',
@@ -19,7 +19,7 @@ var DEFAULT_OPTION = {
  * @param  {object} instance Ellipsis
  */
 function render($el, instance) {
-    if (instance.option.useRawReplace) {
+    if (instance.option.get('useHtmlReplace')) {
         $el.html(instance.getResult());
     } else {
         $el.text(instance.getResult());

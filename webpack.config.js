@@ -4,8 +4,8 @@ var BannerPlugin = require("webpack/lib/BannerPlugin");
 // webpack.config.js
 module.exports = {
     entry: {
-        stringWidth: './src/jQuery.stringWidth.js',
-        ellipsisWidth: './src/jQuery.ellipsisWidth.js'
+        stringWidth: './src/JqueryWrapper/jQuery.stringWidth.js',
+        ellipsisWidth: './src/JqueryWrapper/jQuery.ellipsisWidth.js'
     },
     output: {
         path: __dirname + '/dist/',

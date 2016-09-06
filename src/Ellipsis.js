@@ -1,60 +1,36 @@
+//fn
 var striptags = require('striptags');
-
 var stringWidth = require("./stringWidth.js");
+
+//class
+var Option = require("./Option.js");
 var Presenter = require("./Presenter.js");
 
 //Cutters..
 var BaseCutter = require("./Cutter/Base.js");
 var PathCutter = require("./Cutter/Path.js");
 
-//cosnt
-var REPLACE_MARK_PATTERN = "<fixed>:replace</fixed>";
 
 var Ellipsis = function(el, option) {
     this.el = el;
-    this.option = option;
-
-    // this.makredReplace = null;
-    this.initForReplaceWidth();
-
-    // this.stringWidth = null;
-    // this.cutter = null;
+    this.option = new Option(option);
     this.setStringWidth();
     this.setCutter();
-
 };
 
 Ellipsis.prototype = {
 
     getResult: function() {
-        var result = this.cutter.excute();
-
-        if (this.markedReplace) {
-            result = result.replace(this.markedReplace, this.option.replace);
-        }
-
-        return result;
-    },
-
-    initForReplaceWidth: function() {
-
-        if (!this.option.replaceWidth) {
-            return;
-        }
-
-        this.markedReplace = REPLACE_MARK_PATTERN.replace(':replace', this.option.replace);
+        return this.option.removeReplaceWidthTagIfTagged(this.cutter.excute());
     },
 
     setStringWidth: function() {
         this.stringWidth = function(str) {
 
-            //remove replace if exists markedReplace
-            if (this.markedReplace) {
-                str = str.replace(this.markedReplace, '');
-            }
+            str = this.option.removeReplaceIfTagged(str);
 
-            //strip tags if allow raw
-            if (this.option.useRawReplace) {
+            //strip tags if useHtml
+            if (this.option.get('useHtmlReplace')) {
                 str = striptags(str);
             }
 
@@ -63,23 +39,35 @@ Ellipsis.prototype = {
         }.bind(this);
     },
 
+    getPresent: function() {
+        var presenter = new Presenter(this.option);
+
+        switch (this.option.get('position')) {
+            case 'front':
+                return presenter.extract('front');
+            case 'middle':
+                return presenter.extract('middle');
+            case 'after':
+                return presenter.extract('after');
+            default:
+                return function(limit) {
+                    return presenter.extract('Number')(this.option.get('position'), limit);
+                };
+        }
+    },
+
     setCutter: function() {
         var cutter;
 
-        if (this.option.path) {
+        if (this.option.get(path)) {
             cutter = new PathCutter(this.option.pathSeparator);
         } else {
             cutter = new BaseCutter();
         }
 
-        cutter.setText(this.option.newText);
-        cutter.setReplace(this.option.replace);
-        cutter.setPosition(this.option.position);
-        cutter.setStringWidth(this.stringWidth);
-
-        //whether exists markedReplace(replaceWidth)
-        cutter.setPresenter(new Presenter(this.option.newText, this.markedReplace || this.option.replace));
-        cutter.setWidth(this.option.width - (this.option.replaceWidth || 0));
+        cutter.setOption(this.option);
+        cutter.setStringWidth(this.setStringWidth);
+        cutter.setPresent(this.getPresent());
 
         this.cutter = cutter;
     },

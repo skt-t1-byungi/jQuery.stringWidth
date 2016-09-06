@@ -1,28 +1,37 @@
-var Presenter = function(text, replace) {
-    this.text = text;
-    this.replace = replace;
+var ucfirst = require('ucfirst');
+
+var Presenter = function(option) {
+    this.option = option;
+
+    this.text = this.option.get('text');
+    this.replace = this.option.getReplaceOrWithTagged();
 };
 
 Presenter.prototype = {
 
-    toFront: function(limit) {
+    ofFront: function(limit) {
         return this.replace + this.text.substr(this.text.length - limit - 1, limit);
     },
 
-    toMiddle: function(limit) {
+    ofMiddle: function(limit) {
         var preLen = Math.floor(limit / 2),
             afterLen = preLen + (limit % 2);
 
         return this.text.substr(0, preLen).trim() + this.replace + this.text.substr(this.text.length - afterLen - 1, afterLen).trim();
     },
 
-    toAfter: function(limit) {
+    ofAfter: function(limit) {
         return this.text.substr(0, limit).trim() + this.replace;
     },
 
-    byPositionNumber: function(positionNum, limit) {
+    ofNumber: function(positionNum, limit) {
         return "asdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+    },
+
+    extract: function(fnName) {
+        return this['of' + ucfirst(fnName.toLowerCase())].bind(this);
     }
+
 };
 
 module.exports = Presenter;

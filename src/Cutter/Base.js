@@ -1,86 +1,48 @@
-var Base = function() {
-    // this.position = "middle";
-    // this.replace= '...';
-    // this.presenter = null;
-    // this.stringWidth = null;
-    // this.width = 0;
-    // this.replaceWidth = null;
-};
+var Base = function() {};
 
 Base.prototype = {
 
-    setText: function(text) {
-        this.text = text;
-    },
-
-    setWidth: function(width) {
-        this.width = width;
-    },
-
-    setReplace: function(replace) {
-        this.replace = replace;
-    },
-
-    setPresenter: function(presenter) {
-        this.presenter = presenter;
-    },
-
-    setPosition: function(position) {
-        this.position = position;
+    setOption: function(option) {
+        this.option = option;
     },
 
     setStringWidth: function(stringWidth) {
         this.stringWidth = stringWidth;
     },
 
-    setReplaceWidth: function(replaceWidth, markReplace) {
-        this.replaceWidth = replaceWidth;
+    setPresent: function(present) {
+        this.present = present;
     },
 
-    isSuitableText: function(text) {
-        return this.width >= this.stringWidth(text);
+    isAllowLength: function(text) {
+        return this.stringWidth(text) <= this.option.getWidth();
     },
 
-    getSuitableLength: function(text) {
-        return Math.floor(this.width / (this.stringWidth(text) / text.length) - this.replace.length);
-    },
-
-    getPresent: function() {
-        var presenter = this.presenter;
-        switch (this.position) {
-            case 'front':
-                return presenter.toFront.bind(presenter);
-            case 'middle':
-                return presenter.toMiddle.bind(presenter);
-            case 'after':
-                return presenter.toAfter.bind(presenter);
-            default:
-                return function(limit) {
-                    return presenter.byPositionNumber.bind(presenter)(this.position, limit);
-                };
-        }
+    guessSuitableLength: function(text) {
+        return Math.floor(this.option.getWidth() / (this.stringWidth(text) / text.length) - this.option.getReplaceLength());
     },
 
     excute: function() {
 
-        if (this.isSuitableText(this.text)) {
-            return this.text;
+        if (this.isAllowLength(this.option.get('text'))) {
+            return this.option.get('text');
         }
 
-        var assumeLen = this.getSuitableLength(this.text),
-            present = this.getPresent();
+        var assumeLen = this.guessSuitableLength(this.option.get('text')),
+            parsedText = this.present(assumeLen);
 
-        var parsedText = present(assumeLen);
+
+        //find suitable..
         var prevParsedText;
 
         do {
-            //store preve text..
+            //store prev text..
             prevParsedText = parsedText;
 
             assumeLen++;
-            parsedText = present(assumeLen);
+            parsedText = this.present(assumeLen);
 
-        } while (this.isSuitableText(parsedText));
+        } while (this.isAllowLength(parsedText));
 
         return prevParsedText ? prevParsedText : parsedText;
     }
