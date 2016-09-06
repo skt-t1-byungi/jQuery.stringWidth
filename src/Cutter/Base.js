@@ -25,7 +25,6 @@ Base.prototype = {
 
     guessSuitableLength: function() {
         var charWidth = this.stringWidth(this.option.getText()) / this.option.getText().length;
-
         return Math.floor(this.option.getWidth() / charWidth - this.option.getReplaceLength());
     },
 
