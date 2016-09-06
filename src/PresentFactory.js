@@ -6,34 +6,34 @@ var Present = function(option) {
 
     switch (this.option.get('position')) {
         case 'front':
-            return this.ofFront;
+            return this.toFront;
         case 'middle':
-            return this.ofMiddle;
+            return this.toMiddle;
         case 'after':
-            return this.ofAfter;
+            return this.toAfter;
         default:
-            return this.ofNumber;
+            return this.toNumber;
     }
 };
 
 Present.prototype = {
 
-    ofFront: function(limit) {
+    toFront: function(limit) {
         return this.option.getReplaceOrWithTagged() + this.option.getText().substr(this.option.getText().length - limit - 1).trim();
     },
 
-    ofMiddle: function(limit) {
+    toMiddle: function(limit) {
         var preLen = Math.floor(limit / 2),
             afterLen = preLen + (limit % 2);
 
         return this.option.getText().substr(0, preLen).trim() + this.option.getReplaceOrWithTagged() + this.option.getText().substr(this.option.getText().length - afterLen - 1, afterLen).trim();
     },
 
-    ofAfter: function(limit) {
+    toAfter: function(limit) {
         return this.option.getText().substr(0, limit).trim() + this.option.getReplaceOrWithTagged();
     },
 
-    ofNumber: function(limit) {
+    toNumber: function(limit) {
         var str;
 
         if (this.option.get('position') > 0) {

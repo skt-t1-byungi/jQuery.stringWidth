@@ -72,7 +72,7 @@ $.fn.ellipsisWidth = function(param) {
     }
 
     if (!option.width) {
-        option.width = this.width();
+        option.width = this.innerWidth();
     }
 
     if (!option.newText) {
@@ -96,6 +96,8 @@ $.fn.ellipsisWidth = function(param) {
         }
     } else {
         //remove if rerenderOnResize is false
+        this.removeData(INSTANCE_SET_PROP);
+
         var searcedIndex = rerenderList.indexOf(this);
 
         if (searcedIndex > -1) {
