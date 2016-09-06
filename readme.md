@@ -1,6 +1,7 @@
 jQuery.ellipsisWidth
 ==============================
-jQuery plugin for dynamic ellipsis effect. (not used css)
+jQuery plugin for dynamic ellipsis effect (not used css),
+and stringWidth. (bonus)
 
 Browser support
 ---
@@ -128,4 +129,12 @@ $("div").ellipsisWidth({
     useHtmlReplace:true,
     position: "middle"
 });
+```
+stringWidth
+---
+```js
+$("span").stringWidth("test");
+// 15px, but not render.
+$("span").text("test").width();
+// 15px, get after renderred
 ```
