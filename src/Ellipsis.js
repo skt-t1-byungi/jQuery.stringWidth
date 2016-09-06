@@ -4,7 +4,9 @@ var stringWidth = require("./stringWidth.js");
 
 //class
 var Option = require("./Option.js");
-var Presenter = require("./Presenter.js");
+
+//factory
+var PresentFactory = require("./PresentFactory.js");
 
 //Cutters..
 var BaseCutter = require("./Cutter/Base.js");
@@ -42,23 +44,6 @@ Ellipsis.prototype = {
         }.bind(this);
     },
 
-    getPresent: function() {
-        var presenter = new Presenter(this.option);
-
-        switch (this.option.get('position')) {
-            case 'front':
-                return presenter.extract('front');
-            case 'middle':
-                return presenter.extract('middle');
-            case 'after':
-                return presenter.extract('after');
-            default:
-                return function(limit) {
-                    return presenter.extract('number')(this.option.get('position'), limit);
-                };
-        }
-    },
-
     setCutter: function() {
         var cutter;
 
@@ -70,7 +55,7 @@ Ellipsis.prototype = {
 
         cutter.setOption(this.option);
         cutter.setStringWidth(this.stringWidth);
-        cutter.setPresent(this.getPresent());
+        cutter.setPresent(PresentFactory(this.option));
 
         this.cutter = cutter;
     },

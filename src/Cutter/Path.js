@@ -1,5 +1,5 @@
 var BaseCutter = require("./Base.js");
-var Presenter = require("../Presenter.js");
+var PresentFactory = require("../PresentFactory.js");
 var extend = require('extend'); // for mixins..
 var parentProps = BaseCutter.prototype;
 
@@ -13,9 +13,7 @@ extend(Path.prototype, parentProps, {
 
     resetOptionExceptFilename: function() {
         var fname = this.getFilename();
-
         this.option.set('width', this.option.get('width') - this.stringWidth(fname));
-
         this.option.setText(this.option.getText().replace(new RegExp(fname + '$'), ''));
     },
 
@@ -25,16 +23,17 @@ extend(Path.prototype, parentProps, {
 
     excuteAboutFilename: function() {
 
-        //change origin text
+        //change option for filename
         this.option.setText(this.getFilename());
+        this.option.set('position', -this.option.getExtension().length);
+
+        console.log(this.option.getExtension().length);
 
         //change present
-        this.setPresent(function(limit) {
-            return (new Presenter(this.option)).extract('number')(-(this.option.getExtension().length + 1), limit);
-        });
+        this.setPresent(PresentFactory(this.option));
 
         //excute
-        return parentProps.excute.call(this);
+        return this.findByLoop();
     },
 
     excute: function() {
