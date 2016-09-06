@@ -134,7 +134,7 @@ bonus) stringWidth
 ---
 ```js
 $("span").stringWidth("test");
-// 15px, but no render.
+// 15px, no render.
 $("span").text("test").width();
 // 15px, get after renderred
 ```
