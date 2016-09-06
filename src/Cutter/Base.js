@@ -23,8 +23,8 @@ Base.prototype = {
         return this.stringWidth(text) <= this.option.getWidth();
     },
 
-    guessSuitableLength: function(text) {
-        return Math.floor(this.option.getWidth() / (this.stringWidth(text) / text.length) - this.option.getReplaceLength());
+    guessSuitableLength: function() {
+        return Math.floor(this.option.getWidth() / (this.stringWidth(this.option.getText()) / this.option.getText().length) - this.option.getReplaceLength());
     },
 
     excute: function() {
@@ -36,7 +36,7 @@ Base.prototype = {
     },
 
     findByLoop: function() {
-        var assumeLen = this.guessSuitableLength(this.option.getText()),
+        var assumeLen = this.guessSuitableLength(),
             parsedText = this.present(assumeLen);
 
         var prevParsedText, i = 0;
