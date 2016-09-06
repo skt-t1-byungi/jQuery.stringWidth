@@ -138,3 +138,15 @@ $("span").stringWidth("test");
 $("span").text("test").width();
 // 15px, get after renderred
 ```
+
+but, recommend is..
+---
+```css
+div{
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+ }
+ ```
+ used css. css is better... -_-*
