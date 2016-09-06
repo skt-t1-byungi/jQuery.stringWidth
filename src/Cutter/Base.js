@@ -1,8 +1,10 @@
-var Base = function() {};
+var FIND_LOOP_LIMIT = 30;
 
 /**
  * @class
  */
+var Base = function() {};
+
 Base.prototype = {
 
     setOption: function(option) {
@@ -35,9 +37,14 @@ Base.prototype = {
             parsedText = this.present(assumeLen);
 
         //find suitable..
-        var prevParsedText;
+        var prevParsedText, i = 0;
 
         do {
+            //loop limit..
+            if (i++ === FIND_LOOP_LIMIT) {
+                break;
+            }
+
             //store prev text..
             prevParsedText = parsedText;
 
