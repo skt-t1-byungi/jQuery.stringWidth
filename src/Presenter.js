@@ -39,7 +39,7 @@ Presenter.prototype = {
             str =
                 this.text.substr(0, limit - (this.option.getReplaceLength() - positionNum)) +
                 this.replace +
-                this.text.substr(this.text.length - (this.option.getReplaceLength() + positionNum));
+                this.text.substr(this.text.length + positionNum);
         }
 
         return str;
