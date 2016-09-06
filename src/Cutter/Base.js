@@ -1,5 +1,8 @@
 var Base = function() {};
 
+/**
+ * @class
+ */
 Base.prototype = {
 
     setOption: function(option) {
@@ -24,13 +27,12 @@ Base.prototype = {
 
     excute: function() {
 
-        if (this.isAllowLength(this.option.get('text'))) {
-            return this.option.get('text');
+        if (this.isAllowLength(this.option.getText())) {
+            return this.option.getText();
         }
 
-        var assumeLen = this.guessSuitableLength(this.option.get('text')),
+        var assumeLen = this.guessSuitableLength(this.option.getText()),
             parsedText = this.present(assumeLen);
-
 
         //find suitable..
         var prevParsedText;

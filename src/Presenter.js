@@ -1,16 +1,19 @@
 var ucfirst = require('ucfirst');
 
+/**
+ * @class
+ */
 var Presenter = function(option) {
     this.option = option;
 
-    this.text = this.option.get('text');
+    this.text = this.option.getText();
     this.replace = this.option.getReplaceOrWithTagged();
 };
 
 Presenter.prototype = {
 
     ofFront: function(limit) {
-        return this.replace + this.text.substr(this.text.length - limit - 1, limit);
+        return this.replace + this.text.substr(this.text.length - limit - 1, limit).trim();
     },
 
     ofMiddle: function(limit) {

@@ -10,7 +10,9 @@ var Presenter = require("./Presenter.js");
 var BaseCutter = require("./Cutter/Base.js");
 var PathCutter = require("./Cutter/Path.js");
 
-
+/**
+ * @class
+ */
 var Ellipsis = function(el, option) {
     this.el = el;
     this.option = new Option(option);
@@ -35,7 +37,7 @@ Ellipsis.prototype = {
                 str = strip(str);
             }
 
-            return stringWidth(this.el, str); //remove tags..
+            return stringWidth(this.el, str);
 
         }.bind(this);
     },
@@ -60,14 +62,14 @@ Ellipsis.prototype = {
     setCutter: function() {
         var cutter;
 
-        if (this.option.get(path)) {
+        if (this.option.get('path')) {
             cutter = new PathCutter(this.option.pathSeparator);
         } else {
             cutter = new BaseCutter();
         }
 
         cutter.setOption(this.option);
-        cutter.setStringWidth(this.setStringWidth);
+        cutter.setStringWidth(this.stringWidth);
         cutter.setPresent(this.getPresent());
 
         this.cutter = cutter;

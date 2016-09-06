@@ -1,5 +1,8 @@
 var REPLACE_WIDTH_TAG_PATTERN = "<replaceFixed>:replace</replaceFixed>";
 
+/**
+ * @class
+ */
 var Option = function(option) {
     this.data = option;
 };
@@ -7,6 +10,10 @@ var Option = function(option) {
 Option.prototype = {
     get: function(name) {
         return this.data[name];
+    },
+
+    getText: function() {
+        return this.data.newText;
     },
 
     isReplaceWidth: function() {

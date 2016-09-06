@@ -1,6 +1,17 @@
 var context = document.createElement("canvas").getContext("2d");
 
+/**
+ * @function
+ * @param  {object} el  - HTMLElement
+ * @param  {string} str - target string
+ * @return {integer}    - calculated width
+ */
 module.exports = function(el, str) {
+
+    if (!el || !str) {
+        new Error("stringWidth : required params");
+    }
+
     if (typeof str !== 'string' && !str.toString) {
         throw new Error("stringWidth : current param is not stringify.");
     }
