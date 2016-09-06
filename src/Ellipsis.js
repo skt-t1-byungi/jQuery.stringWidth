@@ -1,5 +1,5 @@
 //fn
-var striptags = require('striptags');
+var strip = require('strip');
 var stringWidth = require("./stringWidth.js");
 
 //class
@@ -14,6 +14,7 @@ var PathCutter = require("./Cutter/Path.js");
 var Ellipsis = function(el, option) {
     this.el = el;
     this.option = new Option(option);
+
     this.setStringWidth();
     this.setCutter();
 };
@@ -31,7 +32,7 @@ Ellipsis.prototype = {
 
             //strip tags if useHtml
             if (this.option.get('useHtmlReplace')) {
-                str = striptags(str);
+                str = strip(str);
             }
 
             return stringWidth(this.el, str); //remove tags..
