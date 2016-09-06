@@ -28,7 +28,7 @@ extend(Path.prototype, parentProps, {
         //change origin text
         this.option.setText(this.getFilename());
 
-        //chnage present
+        //change present
         this.setPresent(function(limit) {
             return (new Presenter(this.option)).extract('number')(-(this.option.getExtension().length + 1), limit);
         });

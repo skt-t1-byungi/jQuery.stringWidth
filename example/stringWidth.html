@@ -18,11 +18,30 @@
         <div class="test" style="font-size:2em;"></div>
     </div>
 
+    <br />
+
+    <div class="test" style="font-size:15px; font-family:verdana; letter-spacing: 5px;"></div>
+    <div class="test" style="font-size:20px; font-family:verdana; letter-spacing: -5px;"></div>
+    <div class="test" style="font-size:25px; font-family:verdana; letter-spacing: 15px;"></div>
+    <div style="font-size:15px; letter-spacing: 15px;">
+        <div class="test" style="font-size:2em;"></div>
+    </div>
+
+    <br />
+
+    <div class="test" style="font-size:15px; font-family:verdana; font-weight:400"></div>
+    <div class="test" style="font-size:20px; font-family:verdana; font-weight:700"></div>
+    <div class="test" style="font-size:25px; font-family:verdana; font-weight:900"></div>
+    <div style="font-size:15px; letter-spacing: 15px; font-weight:900"">
+        <div class="test" style="font-size:2em;"></div>
+    </div>
+
     <script>
         var text = "안녕asdf asdf asd";
+        
         $('.test').each(function () {
             var $el = $(this).text(text);
-            console.log($el.width(), $el.stringWidth(text));
+            console.log($el.width(), $el.stringWidth(text), (Math.abs($el.width() - $el.stringWidth(text)) <= 1).toString());
         });
 
     </script>

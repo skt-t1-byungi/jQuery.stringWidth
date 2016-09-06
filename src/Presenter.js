@@ -10,7 +10,7 @@ var Presenter = function(option) {
 Presenter.prototype = {
 
     ofFront: function(limit) {
-        return this.option.getReplaceOrWithTagged() + this.option.getText().substr(this.option.getText().length - limit - 1, limit).trim();
+        return this.option.getReplaceOrWithTagged() + this.option.getText().substr(this.option.getText().length - limit - 1).trim();
     },
 
     ofMiddle: function(limit) {
@@ -29,14 +29,14 @@ Presenter.prototype = {
 
         if (positionNum > 0) {
             str =
-                this.option.getText().substr(0, positionNum) +
+                this.option.getText().substr(0, positionNum).trim() +
                 this.option.getReplaceOrWithTagged() +
-                this.option.getText().substr(this.option.getText().length - limit + positionNum + this.option.getReplaceLength());
+                this.option.getText().substr(this.option.getText().length - limit + positionNum + this.option.getReplaceLength()).trim();
         } else {
             str =
-                this.option.getText().substr(0, limit - (this.option.getReplaceLength() - positionNum)) +
+                this.option.getText().substr(0, limit - (this.option.getReplaceLength() - positionNum)).trim() +
                 this.option.getReplaceOrWithTagged() +
-                this.option.getText().substr(this.option.getText().length + positionNum);
+                this.option.getText().substr(this.option.getText().length + positionNum).trim();
         }
 
         return str;

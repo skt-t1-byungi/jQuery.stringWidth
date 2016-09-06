@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ellipsisWidth</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <script type="text/javascript" src="../dist/jQuery.ellipsisWidth.min.js"></script>
+</head>
+<style>
+    div{
+        display: inline
+    }
+</style>
+<body>
+    <div class="test-replace1">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-replace2">
+        asasfdasfdasdsaf asfas 234243 !!!!!!!!!fadfasdf
+    </div><br>
+
+    <div class="test-replace3" style="letter-spacing:30px;">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <div class="test-replace4" style="letter-spacing:-5px;">
+        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+    </div><br>
+
+    <script>
+        $('.test-replace1').ellipsisWidth({
+            width : 100,
+            replace: "<span>๏๏๏</span>",
+            useHtmlReplace: true
+        });
+
+        $('.test-replace2').ellipsisWidth({
+            width : 100,
+            replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
+            replaceWidth: 30,
+            useHtmlReplace: true
+        });
+
+        $('.test-replace3').ellipsisWidth({
+            width : 100,
+            replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
+            replaceWidth: 30,
+            useHtmlReplace: true
+        });
+
+        $('.test-replace4').ellipsisWidth({
+            width : 100,
+            replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
+            replaceWidth: 30,
+            useHtmlReplace: true
+        });        
+    </script>
+</body>
+</html>

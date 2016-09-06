@@ -3,6 +3,7 @@ var Ellipsis = require("../Ellipsis.js");
 
 var INSTANCE_SET_PROP = '_ellipsisWidthInstance';
 var DEFAULT_OPTION = {
+    //width: 100,
     //newText: "blah..",
     replace: '...',
     //replaceWidth: 50,
@@ -67,7 +68,7 @@ $.fn.ellipsisWidth = function(param) {
             width: param
         });
     } else {
-        $.extend(option, DEFAULT_OPTION, param);
+        $.extend(option, DEFAULT_OPTION, param || {});
     }
 
     if (!option.width) {
@@ -78,7 +79,6 @@ $.fn.ellipsisWidth = function(param) {
         option.newText = this.text();
     }
 
-    //remove empty char
     option.newText = option.newText.trim();
 
 

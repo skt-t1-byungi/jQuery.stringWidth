@@ -24,5 +24,12 @@ module.exports = function(el, str) {
 
     context.font = styles.fontStyle + ' ' + styles.fontVariant + ' ' + styles.fontWeight + ' ' + styles.fontSize + ' / ' + styles.lineHeight + ' ' + styles.fontFamily;
 
-    return context.measureText(str.replace(/^\s+/gm, '').replace(/\s+$/, ' ')).width;
+    var result = context.measureText(str.replace(/^\s+/gm, '').replace(/\s+$/, ' ')).width,
+        spacing = parseInt(styles.letterSpacing);
+
+    if (isFinite(spacing)) {
+        result += spacing * str.length;
+    }
+
+    return result;
 };

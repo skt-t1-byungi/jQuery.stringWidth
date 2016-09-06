@@ -1,3 +1,5 @@
+var strip = require('strip');
+
 var REPLACE_WIDTH_TAG_PATTERN = "<replaceFixed>:replace</replaceFixed>";
 
 /**
@@ -70,7 +72,15 @@ Option.prototype = {
     },
 
     getReplaceLength: function() {
-        return this.isReplaceWidth() ? 0 : this.get('replace').length;
+        if (this.isReplaceWidth()) {
+            return 0;
+        }
+
+        if (this.get('useHtmlReplace')) {
+            return strip(this.get('replace')).length;
+        }
+
+        return this.get('replace').length;
     },
 
     getFilename: function() {
