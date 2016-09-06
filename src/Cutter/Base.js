@@ -24,7 +24,9 @@ Base.prototype = {
     },
 
     guessSuitableLength: function() {
-        return Math.floor(this.option.getWidth() / (this.stringWidth(this.option.getText()) / this.option.getText().length) - this.option.getReplaceLength());
+        var charWidth = this.stringWidth(this.option.getText()) / this.option.getText().length;
+
+        return Math.floor(this.option.getWidth() / charWidth - this.option.getReplaceLength());
     },
 
     excute: function() {
