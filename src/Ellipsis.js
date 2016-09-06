@@ -54,7 +54,7 @@ Ellipsis.prototype = {
                 return presenter.extract('after');
             default:
                 return function(limit) {
-                    return presenter.extract('Number')(this.option.get('position'), limit);
+                    return presenter.extract('number')(this.option.get('position'), limit);
                 };
         }
     },

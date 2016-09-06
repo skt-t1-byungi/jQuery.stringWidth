@@ -33,12 +33,15 @@ Base.prototype = {
             return this.option.getText();
         }
 
+        return this.findByLoop();
+    },
+
+    findByLoop: function() {
+
         var assumeLen = this.guessSuitableLength(this.option.getText()),
             parsedText = this.present(assumeLen);
 
-        //find suitable..
         var prevParsedText, i = 0;
-
         do {
             //loop limit..
             if (i++ === FIND_LOOP_LIMIT) {

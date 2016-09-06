@@ -1,6 +1,19 @@
 var REPLACE_WIDTH_TAG_PATTERN = "<replaceFixed>:replace</replaceFixed>";
 
 /**
+ * get filename from path
+ * @private
+ * @param  {string} path      
+ * @param  {string} separator   - default "/"
+ * @return {string}
+ */
+var filename = function(path, separator) {
+    separator = separator || '/';
+    var separated = path.split(separator);
+    return separated[separated.length - 1];
+};
+
+/**
  * @class
  */
 var Option = function(option) {
@@ -12,8 +25,16 @@ Option.prototype = {
         return this.data[name];
     },
 
+    set: function(name, value) {
+        this.data[name] = value;
+    },
+
     getText: function() {
         return this.data.newText;
+    },
+
+    setText: function(value) {
+        this.data.newText = value;
     },
 
     isReplaceWidth: function() {
@@ -50,6 +71,15 @@ Option.prototype = {
 
     getReplaceLength: function() {
         return this.isReplaceWidth() ? 0 : this.get('replace').length;
+    },
+
+    getFilename: function() {
+        return filename(this.getText(), this.get('pathSeparator'));
+    },
+
+    getExtension: function() {
+        var separated = this.getFilename().split('.');
+        return separated[separated.length - 1];
     }
 };
 

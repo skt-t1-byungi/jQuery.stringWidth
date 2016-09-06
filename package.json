@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/skt-t1-byungi/jQuery.ellipsisWidth#readme",
   "dependencies": {
+    "extend": "^3.0.0",
     "strip": "^3.0.0",
     "ucfirst": "^1.0.0"
   }
