@@ -28,7 +28,21 @@ Presenter.prototype = {
     },
 
     ofNumber: function(positionNum, limit) {
-        return "asdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff";
+        var str;
+
+        if (positionNum > 0) {
+            str =
+                this.text.substr(0, positionNum) +
+                this.replace +
+                this.text.substr(this.text.length - limit + positionNum + this.option.getReplaceLength());
+        } else {
+            str =
+                this.text.substr(0, limit - (this.option.getReplaceLength() - positionNum)) +
+                this.replace +
+                this.text.substr(this.text.length - (this.option.getReplaceLength() + positionNum));
+        }
+
+        return str;
     },
 
     extract: function(fnName) {
