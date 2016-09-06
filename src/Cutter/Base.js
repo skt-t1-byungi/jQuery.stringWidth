@@ -49,7 +49,6 @@ Base.prototype = {
             //store prev text..
             prevParsedText = parsedText;
 
-
             assumeLen++;
             parsedText = this.present(assumeLen);
 
