@@ -131,6 +131,16 @@ $("div").ellipsisWidth({
     position: "middle"
 });
 ```
+
+
+warning
+---
+```js
+$("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
+// result: ???
+```
+it`s not working. render styles is not known.
+
 bonus) stringWidth
 ---
 ```js
@@ -151,11 +161,3 @@ div{
  }
 ```
 used css. css is better... -_-*
-
-warning
----
-```js
-$("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
-// result: ???
-```
-it`s not working. render styles is not known.
