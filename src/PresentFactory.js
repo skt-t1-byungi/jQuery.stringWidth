@@ -26,7 +26,11 @@ Present.prototype = {
         var preLen = Math.floor(limit / 2),
             afterLen = preLen + (limit % 2);
 
-        return this.option.getText().substr(0, preLen).trim() + this.option.getReplaceOrWithTagged() + this.option.getText().substr(this.option.getText().length - afterLen - 1, afterLen).trim();
+        var str = this.option.getText().substr(0, preLen).trim() +
+            this.option.getReplaceOrWithTagged() +
+            this.option.getText().substr(this.option.getText().length - afterLen).trim();
+
+        return str;
     },
 
     toAfter: function(limit) {

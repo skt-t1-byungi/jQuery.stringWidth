@@ -119,7 +119,7 @@ $("div").ellipsisWidth({
     rerenderOnResize: true, //default false
 });
 ```
-excute rerender on browser resize.
+rerender on browser resize.
 
 ### can be mixed
 ```js
@@ -127,6 +127,7 @@ $("div").ellipsisWidth({
     width: 130,
     replace:'<img src="/ellips.gif" width="20">',
     useHtmlReplace:true,
+    replaceWidth: 30,
     position: "middle"
 });
 ```
