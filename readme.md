@@ -149,14 +149,13 @@ div{
     white-space: nowrap;
     overflow: hidden;
  }
- ```
- used css. css is better... -_-*
+```
+used css. css is better... -_-*
 
- warning
- ---
- ```js
- $("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
- // result: ???
- ```
- it`s not working. render styles is not known.
- 
+warning
+---
+```js
+$("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
+// result: ???
+```
+it`s not working. render styles is not known.
