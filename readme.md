@@ -139,7 +139,7 @@ warning
 $("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").ellipsisWidth(100);
 // result: ???
 ```
-it`s not working. render styles is not known.
+it`s not working. render styles is not known at dettached element.
 
 bonus) stringWidth
 ---
