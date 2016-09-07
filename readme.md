@@ -69,7 +69,7 @@ $("div").ellipsisWidth({
 $("div").ellipsisWidth({
     position:"middle" // "front"|"middle"|"after"|Number, default "after"
 });
-// ABCD...VWXY
+// ABCD...WXYZ
 
 $("div").ellipsisWidth({
     position:"front"
