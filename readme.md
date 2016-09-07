@@ -45,11 +45,11 @@ $("div").ellipsisWidth({
 });
 // ABCDEFGHIJ***
 ```
-### useHtmlReplace
+### useHtml
 ```js
 $("div").ellipsisWidth({
     replace:"<span>...</span>",
-    useHtmlReplace:true //default false
+    useHtml:true //default false
 });
 // ABCDEFGHIJ<span>...</span>
 // (no escape..)
@@ -126,7 +126,7 @@ rerender on browser resize.
 $("div").ellipsisWidth({
     width: 130,
     replace:'<img src="/ellips.gif" width="20">',
-    useHtmlReplace:true,
+    useHtml:true,
     replaceWidth: 20,
     position: "middle"
 });

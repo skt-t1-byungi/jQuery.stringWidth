@@ -5,7 +5,7 @@ var REPLACE_WIDTH_TAG_PATTERN = "<replaceFixed>:replace</replaceFixed>";
 /**
  * get filename from path
  * @private
- * @param  {string} path      
+ * @param  {string} path
  * @param  {string} separator   - default "/"
  * @return {string}
  */
@@ -76,7 +76,7 @@ Option.prototype = {
             return 0;
         }
 
-        if (this.get('useHtmlReplace')) {
+        if (this.get('useHtml')) {
             return strip(this.get('replace')).length;
         }
 

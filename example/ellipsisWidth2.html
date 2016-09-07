@@ -12,7 +12,7 @@
 </style>
 <body>
     <div class="test-replace1">
-        asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
+        &lt;span&gt;hi&lt;/span&gt;asfdasfaasdfasdfsadf asf안녕 하세요 가지말라고 ㄴㅁㄹㅇㅁㄴㅇㄹ 우리에게는 필!!!asf!!
     </div><br>
 
     <div class="test-replace2">
@@ -31,29 +31,29 @@
         $('.test-replace1').ellipsisWidth({
             width : 100,
             replace: "<span>๏๏๏</span>",
-            useHtmlReplace: true
+            useHtml: true
         });
 
         $('.test-replace2').ellipsisWidth({
             width : 100,
             replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
             replaceWidth: 30,
-            useHtmlReplace: true
+            useHtml: true
         });
 
         $('.test-replace3').ellipsisWidth({
             width : 100,
             replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
             replaceWidth: 30,
-            useHtmlReplace: true
+            useHtml: true
         });
 
         $('.test-replace4').ellipsisWidth({
             width : 100,
             replace: "<span style='background:red; width:30px; height:15px; display:inline-block'></span>",
             replaceWidth: 30,
-            useHtmlReplace: true
-        });        
+            useHtml: true
+        });
     </script>
 </body>
 </html>

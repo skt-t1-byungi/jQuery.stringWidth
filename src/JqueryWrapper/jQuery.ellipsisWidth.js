@@ -7,7 +7,7 @@ var DEFAULT_OPTION = {
     //newText: "blah..",
     replace: '...',
     //replaceWidth: 50,
-    useHtmlReplace: false,
+    useHtml: false,
     position: 'after', //   front|middle|after
     path: false,
     pathSeparator: '/',
@@ -20,7 +20,7 @@ var DEFAULT_OPTION = {
  * @param  {object} instance Ellipsis
  */
 function render($el, instance) {
-    if (instance.option.get('useHtmlReplace')) {
+    if (instance.option.get('useHtml')) {
         $el.html(instance.getResult());
     } else {
         $el.text(instance.getResult());

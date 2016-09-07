@@ -35,7 +35,7 @@ Ellipsis.prototype = {
             str = this.option.removeReplaceIfTagged(str);
 
             //strip tags if useHtml
-            if (this.option.get('useHtmlReplace')) {
+            if (this.option.get('useHtml')) {
                 str = strip(str);
             }
 
