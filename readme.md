@@ -136,7 +136,7 @@ $("div").ellipsisWidth({
 warning
 ---
 ```js
-$("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
+$("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").ellipsisWidth(100);
 // result: ???
 ```
 it`s not working. render styles is not known.
