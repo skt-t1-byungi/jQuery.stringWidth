@@ -137,7 +137,7 @@ bonus) stringWidth
 $("span").stringWidth("test");
 // 15px, no render.
 $("span").text("test").width();
-// 15px, get after renderred
+// 15px, get after rendered
 ```
 
 but, recommend is..
@@ -151,3 +151,12 @@ div{
  }
  ```
  used css. css is better... -_-*
+
+ warning
+ ---
+ ```js
+ $("<span>ABCDEFGHIJKPQRSTUVWXYZ</span>").stringWidth("test");
+ // result: ???
+ ```
+ it`s not working. render styles is not known.
+ 

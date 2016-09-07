@@ -8,8 +8,12 @@ var context = document.createElement("canvas").getContext("2d");
  */
 module.exports = function(el, str) {
 
-    if (!el || !str) {
-        new Error("stringWidth : required params");
+    if (!el) {
+        new Error("stringWidth : required element param");
+    }
+
+    if (!str) {
+        new Error("stringWidth : required string param");
     }
 
     if (typeof str !== 'string' && !str.toString) {
