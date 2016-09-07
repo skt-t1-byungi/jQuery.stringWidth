@@ -127,7 +127,7 @@ $("div").ellipsisWidth({
     width: 130,
     replace:'<img src="/ellips.gif" width="20">',
     useHtmlReplace:true,
-    replaceWidth: 30,
+    replaceWidth: 20,
     position: "middle"
 });
 ```
